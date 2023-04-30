@@ -17,13 +17,16 @@ public class InsertVehicles {
     }
 
     @Bean
-    public CommandLineRunner demo(VehicleRepository repository) {
+    public CommandLineRunner insertVehiclesDemo(VehicleRepository repository) {
         return (args) -> {
-            // save a vehicle
-            Vehicle vehicle = new Vehicle("Honda", "Civic", 2020);
-            repository.save(vehicle);
+            // Create and set the properties of a new Vehicle object
+            Vehicle vehicle = new Vehicle();
+            vehicle.setMake("Lexus");
+            vehicle.setModel("RX350");
+            vehicle.setYear(2023);
 
-            log.info("Vehicle saved: {}", vehicle);
+            // Save the Vehicle object to the database
+            repository.save(vehicle);
         };
     }
 }
